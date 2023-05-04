@@ -1,0 +1,74 @@
+server:
+  port: '8082'
+
+spring:
+  profiles:
+    active: qa
+
+---
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    url: jdbc:postgresql://localhost:5432/postgres
+    hikari:
+      schema: spring-boot
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
+  config:
+    activate:
+      on-profile:
+welcome:
+  message: Welcome to Beyzoskaya's page!
+
+---
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    url: jdbc:postgresql://localhost:5432/postgres
+    hikari:
+      schema: spring-boot-qa
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
+  config:
+    activate:
+      on-profile:
+welcome:
+  message: Welcome to Beyzoskaya's page!
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude: "env,beans"
+
+
+---
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    url: jdbc:postgresql://localhost:5432/postgres
+    hikari:
+      schema:
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
+  config:
+    activate:
+      on-profile:
+welcome:
+  message: Welcome to Beyzoskaya's page!
